@@ -1,0 +1,44 @@
+{
+  "name": "LINKGO",
+  "short_name": "LINKGO",
+  "description": "Save a link from any app and find it again.",
+  "lang": "ko",
+  "dir": "auto",
+  "start_url": "/linkgo-web/",
+  "scope": "/linkgo-web/",
+  "id": "/linkgo-web/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0B0B0F",
+  "background_color": "#0B0B0F",
+  "icons": [
+    {
+      "src": "/linkgo-web/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/linkgo-web/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/linkgo-web/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/linkgo-web/share",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

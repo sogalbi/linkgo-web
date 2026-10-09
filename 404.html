@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+  The SPA shell.
+
+  With `web.output: 'single'` Expo renders one HTML file, and when this template
+  exists it is used instead of the built-in one; the CSS links and the bundle
+  <script> are injected at export time. A `src/app/+html.tsx` does NOT work
+  here — in SPA mode Expo lifts only <meta> tags out of it and silently drops
+  links, styles and scripts, which is exactly the manifest link and the service
+  worker registration this app needs. That file belongs to `output: 'static'`.
+
+  This is also the document the service worker caches as the offline shell, so
+  anything required to boot a share offline has to be inline.
+-->
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--
+      `viewport-fit=cover` puts the layout under the notch, which is what
+      react-native-safe-area-context already compensates for. Zoom stays
+      enabled: this is a reading app, and disabling pinch-zoom would be a real
+      accessibility regression.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>LINKGO</title>
+    <meta name="description" content="Save a link from any app and find it again." />
+
+    <!--
+      The manifest is what makes the app installable, and installability is what
+      registers `share_target` — so this link is the difference between LINKGO
+      being in the Android share sheet and not.
+    -->
+    <link rel="manifest" href="/linkgo-web/manifest.json" />
+    <meta name="theme-color" content="#0B0B0F" />
+
+    <!--
+      iOS ignores the manifest entirely. These are what an iPhone reads for
+      "Add to Home Screen"; without them the shortcut opens in a Safari tab
+      with a screenshot for an icon.
+    -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="LINKGO" />
+    <link rel="apple-touch-icon" href="/linkgo-web/icons/apple-touch-icon.png" />
+
+    <!-- react-native-web's recommended reset, plus body scroll lock for <ScrollView>. -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+
+    <!--
+      Painted before React mounts. Without it the browser shows its own white
+      page for as long as the bundle takes to boot, which on a cold share is the
+      first thing the user sees.
+    -->
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0b0b0f;
+        }
+      }
+    </style>
+  <link rel="icon" href="/linkgo-web/favicon.ico"/><link rel="preload" href="/linkgo-web/_expo/static/css/global-87fd0564cfa78f37afcb8d7603e15d75.css" as="style">
+<link rel="stylesheet" href="/linkgo-web/_expo/static/css/global-87fd0564cfa78f37afcb8d7603e15d75.css"></head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!--
+      Registered after `load` so it does not compete with the bundle it is
+      caching. Failures are swallowed: no service worker means no offline shell
+      and no install prompt, but the app itself is unaffected, and an unhandled
+      rejection here would be the worse outcome.
+    -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/linkgo-web/sw.js').catch(function () {});
+        });
+      }
+    </script>
+  <script src="/linkgo-web/_expo/static/js/web/entry-b17e001da26b6a4e3e797e48610c98a5.js" defer></script>
+</body>
+</html>
