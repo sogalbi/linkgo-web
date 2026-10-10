@@ -49,6 +49,7 @@ const PRECACHE = [
   `${BASE}manifest.json`,
   `${BASE}icons/icon-192.png`,
   `${BASE}icons/icon-512.png`,
+  `${BASE}icons/badge-96.png`,
 ];
 
 self.addEventListener('install', (event) => {
@@ -130,7 +131,9 @@ self.addEventListener('push', (event) => {
       body: reminder.body,
       tag: reminder.tag,
       icon: `${BASE}icons/icon-192.png`,
-      badge: `${BASE}icons/icon-192.png`,
+      // Android draws the badge from its alpha channel alone; a full-colour
+      // icon there becomes a white square in the status bar.
+      badge: `${BASE}icons/badge-96.png`,
       lang: 'ko',
       data: { path: reminder.path },
     }),
