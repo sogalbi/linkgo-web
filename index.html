@@ -15,7 +15,15 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-JgWwDzfS+BxcWfesjbM6gh2LBlJyCO2otuJ5O1cBY9U='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.youtube.com https://publish.twitter.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--
+      Only the origin, never the path, goes to other sites: /s/<token> and
+      /join/<token> carry a secret in theirs. The Content-Security-Policy is
+      added after this line at build time, with the hash of the one inline
+      script below (scripts/build-web.mjs).
+    -->
+    <meta name="referrer" content="strict-origin" />
 
     <!--
       `viewport-fit=cover` puts the layout under the notch, which is what
@@ -93,12 +101,21 @@
       rejection here would be the worse outcome.
     -->
     <script>
+      // Never inside another site's frame: a page that frames LINKGO could lay
+      // its own buttons over ours (clickjacking), and GitHub Pages cannot send
+      // the header that forbids it. Hidden first, then broken out of.
+      if (window.top !== window.self) {
+        document.documentElement.style.display = 'none';
+        try {
+          window.top.location.replace(window.self.location.href);
+        } catch (e) {}
+      }
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('/linkgo-web/sw.js').catch(function () {});
         });
       }
     </script>
-  <script src="/linkgo-web/_expo/static/js/web/entry-79e8a529d064c97afb17497ad9658073.js" defer></script>
+  <script src="/linkgo-web/_expo/static/js/web/entry-7a4acb27f3af8b2c4b2588d0d5e55f0c.js" defer></script>
 </body>
 </html>
