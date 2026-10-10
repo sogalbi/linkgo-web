@@ -94,6 +94,69 @@ function cacheShell(response) {
   putInCache(SHELL, response);
 }
 
+// ---------------------------------------------------------------------------
+// "다시 보기" reminders (migration 0016)
+// ---------------------------------------------------------------------------
+//
+// The server (`send-reminders`) pushes `{ title, body, path, tag }`, encrypted
+// to this browser. Anything else in a push is ignored rather than shown: the
+// push service relays it, and a notification is the one thing a page cannot
+// take back.
+
+const ITEM_PATH = /^item\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+function readReminder(data) {
+  let value = {};
+  try {
+    value = data ? data.json() : {};
+  } catch {
+    value = {};
+  }
+  const text = (field, max) =>
+    typeof value[field] === 'string' ? value[field].slice(0, max) : '';
+  return {
+    title: text('title', 120) || 'LINKGO',
+    body: text('body', 240),
+    // Only the app's own item route, or the library: never an arbitrary URL.
+    path: ITEM_PATH.test(value.path) ? value.path : '',
+    tag: text('tag', 64) || 'linkgo',
+  };
+}
+
+self.addEventListener('push', (event) => {
+  const reminder = readReminder(event.data);
+  event.waitUntil(
+    self.registration.showNotification(reminder.title, {
+      body: reminder.body,
+      tag: reminder.tag,
+      icon: `${BASE}icons/icon-192.png`,
+      badge: `${BASE}icons/icon-192.png`,
+      lang: 'ko',
+      data: { path: reminder.path },
+    }),
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const path = (event.notification.data && event.notification.data.path) || '';
+  const target = new URL(`${BASE}${ITEM_PATH.test(path) ? path : ''}`, self.location.origin).href;
+
+  // An open LINKGO window is reused — focused, then sent to the link — so a
+  // tap never stacks a second copy of the app.
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async (windows) => {
+      const app = windows.find((client) => new URL(client.url).pathname.startsWith(BASE));
+      if (app) {
+        await app.focus();
+        if ('navigate' in app) await app.navigate(target).catch(() => undefined);
+        return;
+      }
+      await self.clients.openWindow(target);
+    }),
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
