@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.11-4",
-  "commit": "b69084b255aad9fcd6fa67b212a797a4acc32e87",
-  "note": "첫 로딩 개선: 번들 37% 감소, Supabase 미리 연결",
-  "built_at": "2026-10-11T09:51:02.804Z",
+  "release": "2026.10.11-5",
+  "commit": "8bb736de9b6b8bd4dbe667a8521c969eaf33d7b1",
+  "note": "첫 화면 바로 표시: 불러오는 동안 LINKGO 시작 화면",
+  "built_at": "2026-10-11T13:45:04.796Z",
   "latest_migration": "20261011000025_platform_filter.sql"
 }
