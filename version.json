@@ -1,0 +1,7 @@
+{
+  "release": "2026.10.11-3",
+  "commit": "b3b2edd893a83ee3a3989b2b5c0e0eeb7cce0fc3",
+  "note": "플랫폼별로 보기, 버전 표시",
+  "built_at": "2026-10-11T05:52:30.912Z",
+  "latest_migration": "20261011000025_platform_filter.sql"
+}
