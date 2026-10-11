@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.11-3",
-  "commit": "b3b2edd893a83ee3a3989b2b5c0e0eeb7cce0fc3",
-  "note": "플랫폼별로 보기, 버전 표시",
-  "built_at": "2026-10-11T05:52:30.912Z",
+  "release": "2026.10.11-4",
+  "commit": "b69084b255aad9fcd6fa67b212a797a4acc32e87",
+  "note": "첫 로딩 개선: 번들 37% 감소, Supabase 미리 연결",
+  "built_at": "2026-10-11T09:51:02.804Z",
   "latest_migration": "20261011000025_platform_filter.sql"
 }
