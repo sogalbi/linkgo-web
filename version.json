@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.11-5",
-  "commit": "8bb736de9b6b8bd4dbe667a8521c969eaf33d7b1",
-  "note": "첫 화면 바로 표시: 불러오는 동안 LINKGO 시작 화면",
-  "built_at": "2026-10-11T13:45:04.796Z",
+  "release": "2026.10.12-1",
+  "commit": "f3f4b68678e6c19d66aa1b1d70402aa60baf8e81",
+  "note": "1단계: 소개 화면·앱 안 브라우저 안내·설치 버튼·링크 미리보기",
+  "built_at": "2026-10-11T15:05:55.955Z",
   "latest_migration": "20261011000025_platform_filter.sql"
 }

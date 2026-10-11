@@ -15,7 +15,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-JgWwDzfS+BxcWfesjbM6gh2LBlJyCO2otuJ5O1cBY9U='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.youtube.com https://publish.twitter.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-xzObiAS5DdrIsV04lyrfGc8giP+kLph6ETnYdYroe1g='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.youtube.com https://publish.twitter.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--
       Only the origin, never the path, goes to other sites: /s/<token> and
@@ -34,7 +34,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <title>LINKGO</title>
-    <meta name="description" content="Save a link from any app and find it again." />
+    <meta
+      name="description"
+      content="인스타·유튜브·스레드·카톡에서 공유한 링크를 AI가 요약하고 폴더로 정리해요. Save any link — AI sums it up and files it."
+    />
+
+    <!--
+      What a link to LINKGO looks like once pasted into KakaoTalk, Threads,
+      Instagram, X or Facebook. Absolute URLs, because crawlers do not resolve
+      relative ones — change them with the domain. GitHub Pages answers deep
+      links (/join/…, /s/…) from 404.html with a 404 status, which some
+      crawlers will not preview; the app's own address previews everywhere.
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LINKGO" />
+    <meta property="og:title" content="LINKGO — 공유만 하세요. 정리는 LINKGO가 해요." />
+    <meta
+      property="og:description"
+      content="인스타·유튜브·스레드·카톡 링크를 공유하면 AI가 요약하고 폴더로 정리해요. Save any link — AI sums it up and files it."
+    />
+    <meta property="og:url" content="https://sogalbi.github.io/linkgo-web/" />
+    <meta property="og:image" content="https://sogalbi.github.io/linkgo-web/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LINKGO: 공유한 링크가 요약과 폴더로 정리된 카드" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!--
       The manifest is what makes the app installable, and installability is what
@@ -207,7 +233,41 @@
           navigator.serviceWorker.register('/linkgo-web/sw.js').catch(function () {});
         });
       }
+
+      // Chrome offers installing only through this event, once, and it can
+      // fire before the app mounts. Kept for the "앱으로 설치" buttons
+      // (src/hooks/use-install-prompt.web.ts), which take it from here.
+      window.addEventListener('beforeinstallprompt', function (event) {
+        event.preventDefault();
+        window.__linkgoInstall = event;
+        window.dispatchEvent(new Event('linkgo:installable'));
+      });
+      window.addEventListener('appinstalled', function () {
+        window.__linkgoInstall = null;
+        window.dispatchEvent(new Event('linkgo:installable'));
+      });
+
+      // KakaoTalk and LINE open links in their own browser, where LINKGO can
+      // be neither installed nor found again from the phone's browser. Both
+      // have a documented way to hand the page over, so it happens at once
+      // (src/lib/in-app-browser.ts has the rest). A shared folder's page is
+      // only being looked at, and stays.
+      (function () {
+        var agent = navigator.userAgent || '';
+        if (/\/s\//.test(location.pathname)) return;
+        var page = location.href.replace(/#.*$/, '');
+        if (/KAKAOTALK/i.test(agent)) {
+          // After `load`: a scheme nothing answers aborts the navigation, and
+          // started mid-parse that would take the app's bundle down with it —
+          // the welcome screen's notice is the fallback, so it has to load.
+          window.addEventListener('load', function () {
+            location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(page);
+          });
+        } else if (/\bLine\/\d/.test(agent) && !/[?&]openExternalBrowser=1/.test(location.search)) {
+          location.replace(page + (location.search ? '&' : '?') + 'openExternalBrowser=1');
+        }
+      })();
     </script>
-  <script src="/linkgo-web/_expo/static/js/web/entry-c34458fb6f2cee8713828c0169300efd.js" defer></script>
+  <script src="/linkgo-web/_expo/static/js/web/entry-499e1035ac59128b94bc8af613699f87.js" defer></script>
 </body>
 </html>
