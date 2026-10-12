@@ -25,7 +25,7 @@
  * the hashes Metro puts in asset filenames — a new build requests new URLs, so
  * old entries are simply never asked for again.
  */
-const CACHE = 'linkgo-v2';
+const CACHE = 'linkgo-v3'; // v3: the LINKGO logo replaced the template icons
 
 /**
  * Where the app is served from — `/` at a domain root, `/linkgo/` on a GitHub

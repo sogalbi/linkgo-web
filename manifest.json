@@ -1,7 +1,7 @@
 {
   "name": "LINKGO",
   "short_name": "LINKGO",
-  "description": "Save a link from any app and find it again.",
+  "description": "공유한 링크를 AI가 요약하고 폴더로 정리해요. Save any link — AI sums it up and files it.",
   "lang": "ko",
   "dir": "auto",
   "start_url": "/linkgo-web/",

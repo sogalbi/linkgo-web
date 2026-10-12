@@ -15,7 +15,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-xzObiAS5DdrIsV04lyrfGc8giP+kLph6ETnYdYroe1g='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.youtube.com https://publish.twitter.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ZkrzIfSNWsLQCs/DAFRj0kVotqZC/Eta1tfliBCEEDM='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.youtube.com https://publish.twitter.com; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--
       Only the origin, never the path, goes to other sites: /s/<token> and
@@ -139,10 +139,14 @@
           'Noto Sans KR', sans-serif;
         transition: opacity 160ms ease-out;
       }
+      #boot-splash .boot-symbol {
+        width: 72px;
+        height: 72px;
+        margin-bottom: -6px;
+      }
       #boot-splash .boot-name {
-        font-size: 28px;
-        font-weight: 700;
-        letter-spacing: 1px;
+        height: 26px;
+        width: auto;
       }
       #boot-splash .boot-dots {
         display: flex;
@@ -206,7 +210,8 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="boot-splash" role="status">
-      <div class="boot-name">LINKGO</div>
+      <svg class="boot-symbol" viewBox="0 0 256 256" aria-hidden="true"><path fill="#ff5c38" d="M 63.25 159.47 L 69.85 152.87 L 83.06 166.07 L 76.46 172.68 Z M 91.05 131.67 A 34.9 34.9 0 0 1 140.41 181.02 L 127.2 167.81 A 16.22 16.22 0 0 0 104.26 144.87 Z M 140.41 181.02 L 112.6 208.83 L 99.4 195.62 L 127.2 167.81 Z M 112.6 208.83 A 34.9 34.9 0 0 1 63.25 159.47 L 76.46 172.68 A 16.22 16.22 0 0 0 99.4 195.62 Z M 81.32 105.25 L 134.15 52.42 L 147.36 65.63 L 94.53 118.46 Z M 134.15 65.63 L 117.47 48.94 L 130.68 35.74 L 147.36 52.42 Z M 124.07 33 L 193.59 33 L 193.59 51.68 L 124.07 51.68 Z M 202.93 42.34 L 202.93 111.85 L 184.25 111.85 L 184.25 42.34 Z M 186.98 118.46 L 170.3 101.77 L 183.51 88.57 L 200.19 105.25 Z M 183.51 101.77 L 151.88 133.4 L 138.67 120.2 L 170.3 88.57 Z M 130.68 154.6 A 34.9 34.9 0 0 1 81.32 105.25 L 94.53 118.46 A 16.22 16.22 0 0 0 117.47 141.4 Z M 131.42 59.02 A 9.34 9.34 0 1 1 150.1 59.02 A 9.34 9.34 0 1 1 131.42 59.02 Z M 114.73 42.34 A 9.34 9.34 0 1 1 133.41 42.34 A 9.34 9.34 0 1 1 114.73 42.34 Z M 184.25 42.34 A 9.34 9.34 0 1 1 202.93 42.34 A 9.34 9.34 0 1 1 184.25 42.34 Z M 184.25 111.85 A 9.34 9.34 0 1 1 202.93 111.85 A 9.34 9.34 0 1 1 184.25 111.85 Z M 167.56 95.17 A 9.34 9.34 0 1 1 186.24 95.17 A 9.34 9.34 0 1 1 167.56 95.17 Z"/></svg>
+      <svg class="boot-name" viewBox="0 0 536 120" aria-label="LINKGO" role="img" focusable="false"><g fill="currentColor"><path d="M 1 10 L 1 110 L 19 110 L 19 10 Z"/><path d="M 10 119 L 64 119 L 64 101 L 10 101 Z"/><circle cx="10" cy="10" r="9"/><circle cx="10" cy="110" r="9"/><circle cx="64" cy="110" r="9"/><path d="M 79 10 L 79 110 L 97 110 L 97 10 Z"/><circle cx="88" cy="10" r="9"/><circle cx="88" cy="110" r="9"/><path d="M 127 110 L 127 10 L 109 10 L 109 110 Z"/><path d="M 110.49 14.96 L 176.49 114.96 L 191.51 105.04 L 125.51 5.04 Z"/><path d="M 193 110 L 193 10 L 175 10 L 175 110 Z"/><circle cx="118" cy="110" r="9"/><circle cx="118" cy="10" r="9"/><circle cx="184" cy="110" r="9"/><circle cx="184" cy="10" r="9"/><path d="M 205 10 L 205 110 L 223 110 L 223 10 Z"/><circle cx="214" cy="10" r="9"/><circle cx="214" cy="110" r="9"/><path d="M 265.64 3.64 L 207.64 61.64 L 220.36 74.36 L 278.36 16.36 Z"/><circle cx="272" cy="10" r="9"/><circle cx="214" cy="68" r="9"/><path d="M 231.56 54.5 L 266.21 114.5 L 281.79 105.5 L 247.15 45.5 Z"/><circle cx="239.36" cy="50" r="9"/><circle cx="274" cy="110" r="9"/><path d="M 391.72 18.28 A 59 59 0 1 0 409 60 L 391 60 A 41 41 0 1 1 378.99 31.01 Z"/><circle cx="385.36" cy="24.64" r="9"/><circle cx="400" cy="60" r="9"/><path d="M 400 51 L 356 51 L 356 69 L 400 69 Z"/><circle cx="400" cy="60" r="9"/><circle cx="356" cy="60" r="9"/><path fill-rule="evenodd" d="M 417 60 A 59 59 0 1 0 535 60 A 59 59 0 1 0 417 60 Z M 435 60 A 41 41 0 1 0 517 60 A 41 41 0 1 0 435 60 Z"/></g></svg>
       <div class="boot-dots" aria-hidden="true"><span></span><span></span><span></span></div>
       <span class="boot-label">불러오는 중</span>
     </div>
@@ -268,6 +273,6 @@
         }
       })();
     </script>
-  <script src="/linkgo-web/_expo/static/js/web/entry-499e1035ac59128b94bc8af613699f87.js" defer></script>
+  <script src="/linkgo-web/_expo/static/js/web/entry-d1b5b23f346b76a4d51d6fdf36c4ded7.js" defer></script>
 </body>
 </html>
