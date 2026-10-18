@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-9",
-  "commit": "950485d6ffd8df011f3defec66937dadb590f95f",
-  "note": "한도 후 자동 재정리 · 링크 내보내기",
-  "built_at": "2026-10-18T13:08:45.620Z",
+  "release": "2026.10.18-10",
+  "commit": "086ba3e1fb106dcaf66bad5a031f340dc3bda9b3",
+  "note": "설치 · 사용법 (LINKGO 옆 버튼, 시작 화면)",
+  "built_at": "2026-10-18T13:18:39.099Z",
   "latest_migration": "20261018000032_account_merge.sql"
 }
