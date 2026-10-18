@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-5",
-  "commit": "516168691e8f8af88eb880feadef4e168c12c8e7",
-  "note": "응원하기: 1:1 오픈채팅에서 선물하기",
-  "built_at": "2026-10-18T10:03:21.669Z",
+  "release": "2026.10.18-6",
+  "commit": "bf710319655684ade48bdef772727097a16ceeef",
+  "note": "응원하기: 카톡 선물하기 + 오픈채팅",
+  "built_at": "2026-10-18T10:17:06.563Z",
   "latest_migration": "20261018000031_security_alerts.sql"
 }
