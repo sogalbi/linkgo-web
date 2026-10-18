@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-8",
-  "commit": "fa3d4d5d4f62c50bf367215deb010a9f8e081885",
-  "note": "체험판 안내 (시작 화면·설정)",
-  "built_at": "2026-10-18T12:20:19.707Z",
+  "release": "2026.10.18-9",
+  "commit": "950485d6ffd8df011f3defec66937dadb590f95f",
+  "note": "한도 후 자동 재정리 · 링크 내보내기",
+  "built_at": "2026-10-18T13:08:45.620Z",
   "latest_migration": "20261018000032_account_merge.sql"
 }
