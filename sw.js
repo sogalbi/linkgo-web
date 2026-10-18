@@ -167,6 +167,10 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
+  // Which release is live: the one file that must never come from a cache,
+  // or the app's 새 버전 알림 would compare against the release it already has.
+  if (url.pathname.endsWith('/version.json')) return;
+
   // Navigations — including `/share?url=...` arriving from the OS share sheet.
   // Network first, because the shell is the one document that must not go
   // stale, with the cached copy as the offline answer. The request URL is

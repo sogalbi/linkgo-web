@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-1",
-  "commit": "088c438734134e1c9d9d9fdecce0ad613d7484ef",
-  "note": "응원하기(카카오톡 선물하기), 문의 · 건의하기, 링크 정리 자동 재시도",
-  "built_at": "2026-10-18T04:04:30.828Z",
+  "release": "2026.10.18-2",
+  "commit": "eba3179810d2d7fbcf11278af627c73ab2b9b08b",
+  "note": "새 버전 알림, 응원하기를 설정 맨 위로",
+  "built_at": "2026-10-18T06:48:35.414Z",
   "latest_migration": "20261018000030_feedback.sql"
 }
