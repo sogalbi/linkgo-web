@@ -104,7 +104,8 @@ function cacheShell(response) {
 // push service relays it, and a notification is the one thing a page cannot
 // take back.
 
-const ITEM_PATH = /^item\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+// A link's screen, or 설정 → 보안 알림 (migration 0031).
+const ITEM_PATH = /^(item\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|security)$/;
 
 function readReminder(data) {
   let value = {};
