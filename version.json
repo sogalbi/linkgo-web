@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-7",
-  "commit": "43fe4e1a303ae7a14b9f2a0f99479c4caabf2f39",
-  "note": "계정 합치기 · 보기 방식 4가지 · 저장 완료 · 홈 로고 · 커피타임",
-  "built_at": "2026-10-18T12:05:05.757Z",
+  "release": "2026.10.18-8",
+  "commit": "fa3d4d5d4f62c50bf367215deb010a9f8e081885",
+  "note": "체험판 안내 (시작 화면·설정)",
+  "built_at": "2026-10-18T12:20:19.707Z",
   "latest_migration": "20261018000032_account_merge.sql"
 }
