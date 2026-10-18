@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-4",
-  "commit": "a3c2b4ee1c7e498c436750117a809a009420638c",
-  "note": "이메일 계정에도 카카오 계정 연결, 새 빈 계정 안내",
-  "built_at": "2026-10-18T09:28:13.947Z",
+  "release": "2026.10.18-5",
+  "commit": "516168691e8f8af88eb880feadef4e168c12c8e7",
+  "note": "응원하기: 1:1 오픈채팅에서 선물하기",
+  "built_at": "2026-10-18T10:03:21.669Z",
   "latest_migration": "20261018000031_security_alerts.sql"
 }
