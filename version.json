@@ -1,7 +1,7 @@
 {
-  "release": "2026.10.18-10",
-  "commit": "086ba3e1fb106dcaf66bad5a031f340dc3bda9b3",
-  "note": "설치 · 사용법 (LINKGO 옆 버튼, 시작 화면)",
-  "built_at": "2026-10-18T13:18:39.099Z",
-  "latest_migration": "20261018000032_account_merge.sql"
+  "release": "2026.10.18-11",
+  "commit": "39076b416bd00bec1a341d870201fe388edb3932",
+  "note": "주소 복사 · 사용 현황(운영자) · 설치 집계",
+  "built_at": "2026-10-18T14:01:31.127Z",
+  "latest_migration": "20261018000033_usage_stats.sql"
 }
